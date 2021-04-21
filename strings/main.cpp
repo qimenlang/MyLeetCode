@@ -6,13 +6,14 @@ using namespace std;
 int lengthOfLongestSubstring(string s) {
 	int minLen = 0;
 	size_t len = s.length();
+	if (len == 1)
+		minLen = 1;
 	for (int i = 0; i < len; i++)
 	{
-		size_t subSize = len - i;
-		for (int j = 1; j <= subSize; j++)
+		for (int j = i + 1; j < len; j++)
 		{
-			auto subStr = s.substr(i,j);
-			if (subStr.find(s[i + j ]) != string::npos)
+			auto subStr = s.substr(i,j - i);
+			if (subStr.find(s[j]) != string::npos)
 			{
 				if((subStr.length() > minLen))
 					minLen = subStr.length();
@@ -29,6 +30,7 @@ int main()
 	//cout << lengthOfLongestSubstring("bbbbb") << endl;
 	//cout << lengthOfLongestSubstring("pwwkew") << endl;
 	//cout << lengthOfLongestSubstring("") << endl;
-	cout << lengthOfLongestSubstring("a") << endl;
+	//cout << lengthOfLongestSubstring("a") << endl;
+	cout << lengthOfLongestSubstring("au") << endl;
 	return 0;
 }
