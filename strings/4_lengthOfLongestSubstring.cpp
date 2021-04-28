@@ -4,24 +4,6 @@
 using namespace std;
 
 int lengthOfLongestSubstring(string s) {
-	int minLen = 0;
-	size_t len = s.length();
-	for (int i = 0; i < len; i++)
-	{
-		for (int j = i + 1; j <= len; j++)
-		{
-			auto subStr = s.substr(i,j - i);
-			if (subStr.length() > minLen)
-				minLen = subStr.length();
-			if (subStr.find(s[j]) != string::npos)
-				break;
-		}
-	}
-
-	return minLen;
-}
-
-int lengthOfLongestSubstring_2(string s) {
 	int minSize = 0;
 
 	for (int i = 0; i < s.length(); i++)
@@ -36,6 +18,12 @@ int lengthOfLongestSubstring_2(string s) {
 			}
 		}
 	}
+
+	return minSize;
+}
+
+int lengthOfLongestSubstring(string s) {
+	int minSize = 0;
 
 	return minSize;
 }
